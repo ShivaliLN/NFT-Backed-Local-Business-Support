@@ -1,39 +1,26 @@
 import React from 'react';
 import { Box, Button, Heading, VStack, Container } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';  // Updated this line
+import { useNavigate } from 'react-router-dom';
 
 function StrategySelectionScreen() {
-  const navigate = useNavigate();  // Updated this line
+  const navigate = useNavigate();
   
   const selectStrategy = (strategy) => {
-
-    // Here we will later integrate the selected strategy with the smart contract
-    navigate('/game');  // Updated this line
+    navigate(`/action?strategy=${strategy}`);
   };
 
   return (
-    <Container
-  centerContent
-  maxW="container.md"
-  py={10}
-  borderRadius="md"
-  bg="transparent"  // Set to transparent to inherit the global background
-  backdropBlur="sm"  // Adding a blur effect for aesthetics
->
-
+    <Container centerContent maxW="container.md" py={10} borderRadius="md" bg="transparent" backdropBlur="sm">
       <Box textAlign="center" fontSize="xl">
         <VStack spacing={8}>
           <Heading as="h1" size="2xl">
             Select Your Strategy
           </Heading>
-          <Button colorScheme="teal" size="lg" onClick={() => selectStrategy('yieldFarming')}>
-            Yield Farming
+          <Button colorScheme="teal" size="lg" onClick={() => selectStrategy('supportLocalBusiness')}>
+            Support Local Business
           </Button>
-          <Button colorScheme="orange" size="lg" onClick={() => selectStrategy('liquidityPool')}>
-            Liquidity Pool
-          </Button>
-          <Button colorScheme="purple" size="lg" onClick={() => selectStrategy('liquidityPool')}>
-            Flashloan (Coming Soon..)
+          <Button colorScheme="orange" size="lg" onClick={() => selectStrategy('createNFTForLocalBusiness')}>
+            Create NFT for Local Business
           </Button>
         </VStack>
       </Box>

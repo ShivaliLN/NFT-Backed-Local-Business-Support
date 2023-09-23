@@ -33,8 +33,8 @@ function HomeScreen() {
     <Container centerContent maxW="container.md" py={10} borderRadius="md" bg="transparent">
       <Box textAlign="center" fontSize="xl">
         <VStack spacing={8}>
-          <Heading as="h1" size="2xl">DeFi Quest</Heading>
-          <Text>Embark on a thrilling journey in the world of DeFi.</Text>
+          <Heading as="h1" size="2xl">NFT-Backed Local Business Support</Heading>
+          <Text>Empower your local community, one NFT at a time.</Text>
 
           {/* Using Web3Button for wallet connection */}
           <Web3Button icon="show" label="Connect Wallet" balance="show" />
@@ -46,7 +46,7 @@ function HomeScreen() {
           {isConnected && <Text display="inline" ml={3}>{account?.address}</Text>}
 
           <Button colorScheme="orange" size="lg" disabled={!isConnected} onClick={startGame}>
-            Start Game
+            Start Exploring..
           </Button>
         </VStack>
       </Box>

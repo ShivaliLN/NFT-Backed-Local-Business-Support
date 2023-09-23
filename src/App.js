@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomeScreen from './components/HomeScreen';
-import GameScreen from './components/GameScreen';
-import EndScreen from './components/EndScreen';
+//import GameScreen from './components/GameScreen';
+//import EndScreen from './components/EndScreen';
 import StrategySelectionScreen from './components/StrategySelectionScreen';
 import './App.css';
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
@@ -14,6 +14,7 @@ import {
 } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 import { useEffect, useState } from "react";
+import ActionScreen from './components/ActionScreen';  // Renamed from GameScreen
 
 
 
@@ -42,11 +43,10 @@ function App() {
     <WagmiConfig config={wagmiConfig}>
       <Router>
         <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/strategy-selection" element={<StrategySelectionScreen />} />
-          <Route path="/game" element={<GameScreen />} />
-          <Route path="/end" element={<EndScreen />} />
-        </Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/strategy-selection" element={<StrategySelectionScreen />} />
+        <Route path="/action" element={<ActionScreen />} />  // Renamed from /game to /action
+      </Routes>
       </Router>
       <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
     </WagmiConfig>
