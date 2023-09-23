@@ -17,7 +17,8 @@ app.get('/fetchQuote', async (req, res) => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
+        //'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`,
+        'Authorization': `Bearer 7IwHaopJoiFVU1pQGFnQUx7LW9kHHIRD`,
       },
     });
     const data = await response.json();

@@ -74,6 +74,7 @@ function GameScreen() {
           {strategy && (
             <>
               <Text>Selected Strategy: {strategy}</Text>
+              <Text>Step 1: Get Quote </Text>
               <Select placeholder="Select source token" onChange={handleTokenChange} color={"orange"}>
                 <option value={POLYGON_DAI_ADDRESS}>Polygon DAI</option>
                 <option value={POLYGON_USDC_ADDRESS}>Polygon USDC</option>
