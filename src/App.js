@@ -15,6 +15,7 @@ import {
 import { Web3Modal } from "@web3modal/react";
 import { useEffect, useState } from "react";
 import ActionScreen from './components/ActionScreen';  // Renamed from GameScreen
+import { Flex, Box } from '@chakra-ui/react';
 
 
 
@@ -41,6 +42,10 @@ function App() {
 
   return (
     <WagmiConfig config={wagmiConfig}>
+<Flex direction="column" align="flex-start" justify="flex-start" minHeight="100vh">
+        <Box position="absolute" top={4} right={4}>
+          <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+        </Box>
       <Router>
         <Routes>
         <Route path="/" element={<HomeScreen />} />
@@ -49,6 +54,7 @@ function App() {
       </Routes>
       </Router>
       <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+      </Flex>
     </WagmiConfig>
   );
 

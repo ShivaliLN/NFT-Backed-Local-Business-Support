@@ -39,8 +39,8 @@ function HomeScreen() {
           {/* Using Web3Button for wallet connection */}
           <Web3Button icon="show" label="Connect Wallet" balance="show" />
 
-          {/* Using Web3NetworkSwitch for network switching */}
-          <Web3NetworkSwitch />
+          {/* Commenting out Web3NetworkSwitch to hide network display */}
+      {/* <Web3NetworkSwitch />*/}
           <br />
 
           {isConnected && <Text display="inline" ml={3}>{account?.address}</Text>}

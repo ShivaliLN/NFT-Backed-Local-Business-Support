@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Heading, VStack, Container, Text, Input, FormControl, FormLabel } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
+import { Contract, JsonRpcProvider, Wallet } from 'ethers';
+
+
+// Assume contractABI is imported or defined here. Replace it with your actual ABI.
+const contractABI = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_business\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"tokenURI\",\"type\":\"string\"}],\"name\":\"mintNFTByOwner\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]"; 
+const contractAddress = "0xc6d321c0cC595265d7C8e4e462c0f0b614171099"; // Replace with your contract address Scroll Sepolia
+
 
 function ActionScreen() {
   const [strategy, setStrategy] = useState('');
@@ -13,9 +20,35 @@ function ActionScreen() {
     setStrategy(params.get('strategy'));
   }, [location]);
 
-  const handleMintNFT = () => {
-    // Integrate code to interact with the Solidity contract and mint NFT
-    console.log(`Minting NFT for ${business} with description: ${description}`);
+  const handleMintNFT = async () => {
+    try {
+      // Initialize provider and signer
+      //const provider = new JsonRpcProvider(process.env.REACT_APP_SCROLL_RPC);
+      //const signer = new Wallet(process.env.REACT_APP_PRIVATE_KEY, provider);
+
+      const provider = new JsonRpcProvider("https://sepolia-blockscout.scroll.io/api");
+      const signer = new Wallet("c03eda9b7c571f07b7d3cb0a8e3d896316627651f6a36b6e07730033edab0ba5", provider);
+
+        console.log("signer:" + signer)
+      // Create contract instance
+      const contract = new Contract(contractAddress, contractABI, signer);
+      console.log("contract:" + contract.address)
+      // Call mintNFTByOwner function from the smart contract
+      const txResponse = await contract.mintNFTByOwner(
+        signer.address, // Owner's address
+        description,    // Description of the service or product
+        business,       // Business name
+        "ipfs://tokenURI_here"  // Replace with actual IPFS URI
+      );
+
+      console.log(`Transaction hash: ${txResponse.hash}`);
+
+      const receipt = await txResponse.wait();
+
+      console.log(`NFT minted for ${business} with description: ${description}`);
+    } catch (error) {
+      console.error("Error minting NFT:", error);
+    }
   };
 
   return (
