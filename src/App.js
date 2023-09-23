@@ -6,7 +6,7 @@ import HomeScreen from './components/HomeScreen';
 import StrategySelectionScreen from './components/StrategySelectionScreen';
 import './App.css';
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
-import { mainnet, polygon, arbitrum } from 'wagmi/chains';
+import { mainnet, polygon, arbitrum} from 'wagmi/chains';
 import {
   EthereumClient,
   w3mConnectors,
