@@ -23,12 +23,10 @@ function ActionScreen() {
   const handleMintNFT = async () => {
     try {
       // Initialize provider and signer
-      //const provider = new JsonRpcProvider(process.env.REACT_APP_SCROLL_RPC);
-      //const signer = new Wallet(process.env.REACT_APP_PRIVATE_KEY, provider);
+      const provider = new JsonRpcProvider(process.env.REACT_APP_SCROLL_RPC);
+      const signer = new Wallet(process.env.REACT_APP_PRIVATE_KEY, provider);
 
-      const provider = new JsonRpcProvider("https://sepolia-blockscout.scroll.io/api");
-      const signer = new Wallet("c03eda9b7c571f07b7d3cb0a8e3d896316627651f6a36b6e07730033edab0ba5", provider);
-
+      
         console.log("signer:" + signer)
       // Create contract instance
       const contract = new Contract(contractAddress, contractABI, signer);
