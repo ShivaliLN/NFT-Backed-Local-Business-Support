@@ -36,8 +36,8 @@ _NFT4Local_:
 ### 📜 **Smart Contract Development:**
 - **Solidity**: For coding smart contracts.
 - **Scroll Sepolia**: For lower transaction costs and efficient scalability.
-- **Stylus Testnet Deployment**:  Smart contract has been successfully deployed on the Stylus testnet, leveraging Arbitrum's Nitro technology for efficient, fast, and low-cost transactions. This opens up new opportunities for interoperability and novel blockchain use cases.
-**FVM Deployment**: Smart contract is now live on the Filecoin Virtual Machine (FVM). This extends the project into the Filecoin network, renowned for its decentralized storage capabilities and robustness. Utilizing Lotus as the reference node implementation, the deployment on FVM ensures high-level network integrity, secure transaction handling, and opens avenues for innovative data storage solutions for our NFT metadata.
+- **Stylus Testnet**:  Smart contract has been successfully deployed on the Stylus testnet, leveraging Arbitrum's Nitro technology for efficient, fast, and low-cost transactions. This opens up new opportunities for interoperability and novel blockchain use cases.
+**FVM Testnet**: Smart contract is now live on the Filecoin Virtual Machine (FVM). This extends the project into the Filecoin network, renowned for its decentralized storage capabilities and robustness. Utilizing Lotus as the reference node implementation, the deployment on FVM ensures high-level network integrity, secure transaction handling, and opens avenues for innovative data storage solutions for our NFT metadata.
 
 
 ### 📡 **Wallet Connection:**
