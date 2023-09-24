@@ -6,7 +6,6 @@
 
 _NFT4Local_ is a revolutionary platform that utilizes blockchain technology to empower local businesses during challenging times. By minting NFTs that represent future products or services, businesses can gain immediate financial support from the community. The platform brings a new approach to community-driven business support.
 
-**[🎥 Video Presentation](#)**
 
 ## Inspiration
 
