@@ -12,12 +12,12 @@ const contractABI = contractJSON.abi;
 const SCROLL_SEPOLIA_CONTRACT= "0xCc77B02C28dEc3F4369fb21C8cf0491cFa478287"    //"0xc6d321c0cC595265d7C8e4e462c0f0b614171099"; // Replace with your contract address Scroll Sepolia
 const ARBITRUM_STYLUS_CONTRACT= "0xc6d321c0cC595265d7C8e4e462c0f0b614171099"   // Replace with your contract address Stylus Testnet
 const FVM_CALIB_CONTRACT= "0xc6d321c0cC595265d7C8e4e462c0f0b614171099"  //"t410fy3jsdqgmlfjglv6i4tsgfqhqwykboeez3yu6bpi" FVM Testnet
-const contractAddress = FVM_CALIB_CONTRACT;
+const contractAddress = SCROLL_SEPOLIA_CONTRACT;
 
 const JSONRPC_SCROLL="https://sepolia-rpc.scroll.io/"
 const JSONRPC_STYLUS="https://stylus-testnet.arbitrum.io/rpc"
 const JSONRPC_FVM="https://api.calibration.node.glif.io/rpc/v1"
-const jsonRPC =JSONRPC_FVM
+const jsonRPC =JSONRPC_SCROLL
 
 function ActionScreen() {
   const [strategy, setStrategy] = useState('');
@@ -66,7 +66,7 @@ function ActionScreen() {
      //const provider = new JsonRpcProvider(process.env.REACT_APP_SCROLL_RPC);
       //const signer = new Wallet(process.env.REACT_APP_PRIVATE_KEY, provider);
       const provider = new JsonRpcProvider(jsonRPC);
-      const signer = new Wallet("PK", provider);
+      const signer = new Wallet("c03eda9b7c571f07b7d3cb0a8e3d896316627651f6a36b6e07730033edab0ba5", provider);
 
       
         console.log("signer:" + signer)
