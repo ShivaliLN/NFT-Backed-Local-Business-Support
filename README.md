@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+<img src="./logo.jpg" alt="NFT-Backed Local Business Support Logo" width="200"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NFT4Local (NFT-Backed Local Business Support)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+_NFT4Local_ is a revolutionary platform that utilizes blockchain technology to empower local businesses during challenging times. By minting NFTs that represent future products or services, businesses can gain immediate financial support from the community. The platform brings a new approach to community-driven business support.
 
-### `npm start`
+**[🎥 Video Presentation](#)**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Inspiration
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The COVID-19 pandemic and other economic challenges have hit local businesses hard. This platform was inspired by the need to provide a decentralized, innovative, and community-driven method to support these critical pillars of local economies.
 
-### `npm test`
+## What It Does
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+_NFT4Local_:
+1. Allows businesses to mint NFTs representing future services or products.
+2. Enables community members to purchase these NFTs, providing immediate financial support.
+3. Offers an option for NFT holders to redeem their tokens for actual services or products once the business is stable.
+4. Promotes long-term customer relationships through tokens of commitment.
 
-### `npm run build`
+## How It Works
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Connect Wallet**: Users interact with the platform by connecting their digital wallets.
+2. **Strategy Selection**: Choose between supporting a local business or creating an NFT for one.
+3. **Support or Create**: Either browse and buy existing NFTs or mint new ones with specific details.
+4. **Transaction Confirmation**: All actions require wallet confirmation for security and transparency.
+5. **Token of Support**: Minted NFTs serve as tokens of commitment, which can later be redeemed or burned after availing the service or product.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🌐 **Web Development:**
+- **React.js**: Powers the frontend, styled with Chakra UI.
 
-### `npm run eject`
+### 📜 **Smart Contract Development:**
+- **Solidity**: For coding smart contracts.
+- **Scroll Sepolia & FVM Chain**: For lower transaction costs and efficient scalability.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 📡 **Wallet Connection:**
+- **WalletConnect**: For secure and streamlined wallet connectivity.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🎖 **File Storage:**
+- **Filecoin/IPFS**: For decentralized storage of NFT metadata.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Challenges I Ran Into
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Initially I started a DeFi Quest project but due to time constraints I pivoted to this idea which seems to be so useful and doable during the hackathon duration.
 
-## Learn More
+## Accomplishments That I'm Proud Of
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Integration of multiple blockchain networks and the creation of a community-driven platform for supporting local businesses.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## What I Learned
 
-### Code Splitting
+1. Effective use of Scroll Sepolia and FVM Chain networks for smart contracts.
+2. Integrated with WalletConnect first time using their Web3Modal SDK.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Roadmap
 
-### Analyzing the Bundle Size
+Future enhancements include:
+1. Implementing promotional features for businesses to offer discounts or special offers through NFTs.
+2. More incentives for both users to encourage participation.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Technical Details
 
-### Making a Progressive Web App
+### Contracts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Scroll Sepolia Testnet - LocalBusinessNFT Contract**: [View on ScrollScan](#)
+- **FVM Chain Testnet - LocalBusinessNFT Contract**: [View on FVMExplorer](#)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
