@@ -6,7 +6,7 @@ import HomeScreen from './components/HomeScreen';
 import StrategySelectionScreen from './components/StrategySelectionScreen';
 import './App.css';
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
-import { mainnet, polygon, arbitrum} from 'wagmi/chains';
+import { mainnet, polygon, arbitrum, scrollSepolia, filecoinHyperspace, arbitrumGoerli} from 'wagmi/chains';
 import {
   EthereumClient,
   w3mConnectors,
@@ -19,7 +19,7 @@ import { Flex, Box } from '@chakra-ui/react';
 
 
 
-const chains = [mainnet, polygon, arbitrum];
+const chains = [scrollSepolia, filecoinHyperspace, arbitrumGoerli];
 const projectId ='c86e5674490f54850e94c279deb49808';  // Replace this with your actual project ID
 
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
