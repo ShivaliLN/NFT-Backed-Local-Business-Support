@@ -33,7 +33,7 @@ function HomeScreen() {
     <Container centerContent maxW="container.md" py={10} borderRadius="md" bg="transparent">
       <Box textAlign="center" fontSize="xl">
         <VStack spacing={8}>
-          <Heading as="h1" size="2xl">NFT-Backed Local Business Support</Heading>
+          <Heading as="h1" size="2xl">NFT4Local - A NFT-Backed Local Business Support</Heading>
           <Text>Empower your local community, one NFT at a time.</Text>
 
           {/* Using Web3Button for wallet connection */}

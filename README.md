@@ -61,6 +61,7 @@ Integration of multiple blockchain networks and the creation of a community-driv
 Future enhancements include:
 1. Implementing promotional features for businesses to offer discounts or special offers through NFTs.
 2. More incentives for both users to encourage participation.
+3. Ability to transfer NFT ownership from UI
 
 ## Technical Details
 

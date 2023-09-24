@@ -8,7 +8,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 // Notice: @dev Contract for NFT-Backed Local Business Support
 contract LocalBusinessNFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+    Counters.Counter public _tokenIds;
+    Counters.Counter public _tokenIdsForBusiness;
+    Counters.Counter public _tokenIdsForUsers;
 
     // Notice: @dev Mapping from token ID to service or product description
     mapping(uint256 => string) public serviceDescription;
@@ -18,6 +20,9 @@ contract LocalBusinessNFT is ERC721URIStorage, Ownable {
 
     // Notice: @dev Mapping from business name to an array of token IDs
     mapping(string => uint256[]) public tokensOfBusiness;
+
+    // New mapping to keep track of NFTs minted by users
+    mapping(address => uint256[]) public tokensOfUser;
 
     // Notice: @dev Event emitted when a new NFT is minted
     event NFTMinted(address owner, uint256 tokenId, string description, string business);
@@ -29,20 +34,24 @@ contract LocalBusinessNFT is ERC721URIStorage, Ownable {
 
     // Notice: @dev Function to mint a new NFT by the contract owner
     function mintNFTByOwner(address to, string memory _description, string memory _business, string memory tokenURI) public onlyOwner returns (uint256) {
-        return _mintNFT(to, _description, _business, tokenURI);
+        _tokenIdsForBusiness.increment();
+        _tokenIds.increment();  
+        uint256 tokenId = _tokenIds.current();
+        return _mintNFT(to, tokenId, _description, _business, tokenURI);
     }
 
     // Notice: @dev Function to mint a new NFT by any user
     function mintNFTByUser(string memory _description, string memory _business, string memory tokenURI) public returns (uint256) {
-        return _mintNFT(msg.sender, _description, _business, tokenURI);
+        _tokenIdsForUsers.increment();
+        _tokenIds.increment();  
+        uint256 tokenId = _tokenIds.current();
+        tokensOfUser[msg.sender].push(tokenId);  // Add the token to the user's list
+        return _mintNFT(msg.sender, tokenId, _description, _business, tokenURI);
     }
 
     // Notice: @dev Internal function to handle the minting logic
-    function _mintNFT(address to, string memory _description, string memory _business, string memory tokenURI) internal returns (uint256) {
-        _tokenIds.increment();
-        uint256 tokenId = _tokenIds.current();
-
-        _mint(to, tokenId);
+    function _mintNFT(address to, uint256 tokenId, string memory _description, string memory _business, string memory tokenURI) internal returns (uint256) {
+       _mint(to, tokenId);
         _setTokenURI(tokenId, tokenURI);
         serviceDescription[tokenId] = _description;
         businessName[tokenId] = _business;

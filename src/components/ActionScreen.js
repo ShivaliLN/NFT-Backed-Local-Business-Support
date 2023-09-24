@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, Heading, VStack, Container, Text, Input, FormControl, FormLabel, Alert, Image } from '@chakra-ui/react';
+import { Box, Button, Heading, VStack, Container, Text, Input, FormControl, FormLabel, Alert, Image, Flex, AspectRatio, HStack } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
 import { Contract, JsonRpcProvider, Wallet, BrowserProvider } from 'ethers';
 import { Web3Button, Web3NetworkSwitch } from "@web3modal/react";
 
 // Assume contractABI is imported or defined here. Replace it with your actual ABI.
-const contractABI = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_business\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"tokenURI\",\"type\":\"string\"}],\"name\":\"mintNFTByOwner\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"tokenURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_business\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"tokenURI\",\"type\":\"string\"}],\"name\":\"mintNFTByUser\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]"; 
-const contractAddress = "0xc6d321c0cC595265d7C8e4e462c0f0b614171099"; // Replace with your contract address Scroll Sepolia
+//const contractABI = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_business\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"tokenURI\",\"type\":\"string\"}],\"name\":\"mintNFTByOwner\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"tokenURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_business\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"tokenURI\",\"type\":\"string\"}],\"name\":\"mintNFTByUser\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"redeemNFT\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]"; 
+const contractJSON = require('./LocalBusinessNFT.json');
+const contractABI = contractJSON.abi;
+
+const contractAddress = "0xCc77B02C28dEc3F4369fb21C8cf0491cFa478287"    //"0xc6d321c0cC595265d7C8e4e462c0f0b614171099"; // Replace with your contract address Scroll Sepolia
 
 
 function ActionScreen() {
@@ -26,10 +29,10 @@ function ActionScreen() {
       const contract = new Contract(contractAddress, contractABI, provider);
       // Assume you have a function in your contract to get the total number of NFTs
     // Fetch NFTs (This part depends on how your contract is structured)
-    //const nftCount = await contract.nextTokenId() - 1;
+    const nftCount = await contract._tokenIdsForBusiness();
     const nftData = [];
 
-    for (let i = 1; i <= 2; i++) {
+    for (let i = 1; i <= nftCount; i++) {
       const tokenURI = await contract.tokenURI(i);
      // console.log("tokenURI:" + i + tokenURI)
       // Fetch JSON metadata (Assumes metadata is accessible publicly)
@@ -106,21 +109,19 @@ function ActionScreen() {
         }
       });
       console.log(description, business, tokenURI)
-      // Create a Web3Provider using the MetaMask provider
-      const provider = new BrowserProvider(window.ethereum);
-      //const provider = new Web3Provider(window.ethereum);
-      signer = await provider.getSigner();
       
-  
+      // Create a Web3Provider using the MetaMask provider
+      const provider = new BrowserProvider(window.ethereum); // Use BrowserProvider
+      const signer = await provider.getSigner(); // Async call to getSigner
+         
       // Create contract instance with the signer
       const contract = new Contract(contractAddress, contractABI, signer);
-  
+      const nftCount = await contract._tokenIdsForUsers();
+      console.log("Count:" + nftCount)
       // Call the mintNFTByUser function from the smart contract
-      const txResponse = await contract.connect(signer).mintNFTByUser(description, business, tokenURI);
-  
-      // Wait for transaction confirmation
+      const txResponse = await contract.mintNFTByUser(description, business, tokenURI);
       const receipt = await txResponse.wait();
-  
+
       // Set transaction message (or do any other UI updates here)
       const message = `NFT minted for ${business} with description: ${description}`;
       setTransactionMessage(message);
@@ -134,7 +135,22 @@ function ActionScreen() {
   // Add this function to handle NFT burning
 const handleBurnNFT = async (tokenId) => {
     // Logic to burn NFT
-    // Similar to the one in handleMintNFT function
+    try {
+        const provider = new BrowserProvider(window.ethereum); // Use BrowserProvider
+        const signer = await provider.getSigner(); // Async call to getSigner
+        const contract = new Contract(contractAddress, contractABI, signer);
+    
+        const txResponse = await contract.redeemNFT(4);
+        const receipt = await txResponse.wait();
+
+        // Set transaction message (or do any other UI updates here)
+      const message = `NFT purpose fulfilled and has been burned.`;
+      setTransactionMessage(message);
+    
+        console.log(`NFT with token ID ${tokenId} has been burned.`);
+      } catch (error) {
+        console.log("Error while burning NFT:", error);
+      }
   };
 
   return (
@@ -149,14 +165,14 @@ const handleBurnNFT = async (tokenId) => {
           <Web3NetworkSwitch />
           <br />
           {transactionMessage && (
-            <Alert status="success">
+            <Alert status="success" bgColor="blue.500" color="black">
               {transactionMessage}
             </Alert>
           )}
 {strategy === 'supportLocalBusiness' && (
   <>
     <Text fontSize="2xl" mb={4}>Support Local Businesses by Minting NFTs</Text>
-    <VStack spacing={8}>
+    <Flex wrap="wrap" justify="flex-start">
       {availableNFTs.map((nft) => {
         // Extract Business Name and Description from attributes
         const businessName = nft.attributes.find(attr => attr.trait_type === "Business Name")?.value || "Unknown";
@@ -166,22 +182,37 @@ const handleBurnNFT = async (tokenId) => {
         const imageUrl = `https://ipfs.io/ipfs/${nft.image.replace("ipfs://", "")}`;
 
         return (
-          <Box key={nft.tokenId} p={5} borderWidth={1} borderRadius="md">
-            <Text fontSize="xl">{businessName}</Text>
-            <Image src={imageUrl} alt={businessName} boxSize="200px" />
-            <Text>{businessDescription}</Text>
-            <Button colorScheme="green" onClick={() => handleLocalMintNFT(nft.tokenURI)}>
-              Mint NFT
-            </Button>
-            <Button colorScheme="red" onClick={() => handleBurnNFT(nft.tokenId)}>
-              Redeem and Burn NFT
-            </Button>
+          <Box 
+            key={nft.tokenId} 
+            p={5} 
+            borderWidth={1} 
+            borderRadius="md" 
+            boxShadow="xl"
+            m={4}
+            bgColor="gray.100"
+            width="300px"
+          >
+            <Text fontSize="xl" color="teal.500">{businessName}</Text>
+            <AspectRatio ratio={1}>
+              <Image src={imageUrl} alt={businessName} objectFit="cover" borderRadius="md"/>
+            </AspectRatio>
+            <Text color="gray.700">{businessDescription}</Text>
+            <HStack spacing={4} mt={3}>
+              <Button colorScheme="green" onClick={() => handleLocalMintNFT(nft.tokenURI)}>
+                Mint NFT
+              </Button>
+              <Button colorScheme="red" onClick={() => handleBurnNFT(nft.tokenId)}>
+                Redeem NFT (Burn)
+              </Button>
+            </HStack>
           </Box>
         );
       })}
-    </VStack>
+    </Flex>
   </>
 )}
+
+
 
           {strategy === 'createNFTForLocalBusiness' && (
             <>
