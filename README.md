@@ -35,13 +35,19 @@ _NFT4Local_:
 
 ### 📜 **Smart Contract Development:**
 - **Solidity**: For coding smart contracts.
-- **Scroll Sepolia & FVM Chain**: For lower transaction costs and efficient scalability.
+- **Scroll Sepolia**: For lower transaction costs and efficient scalability.
+- **Stylus Testnet Deployment**:  Smart contract has been successfully deployed on the Stylus testnet, leveraging Arbitrum's Nitro technology for efficient, fast, and low-cost transactions. This opens up new opportunities for interoperability and novel blockchain use cases.
+**FVM Deployment**: Smart contract is now live on the Filecoin Virtual Machine (FVM). This extends the project into the Filecoin network, renowned for its decentralized storage capabilities and robustness. Utilizing Lotus as the reference node implementation, the deployment on FVM ensures high-level network integrity, secure transaction handling, and opens avenues for innovative data storage solutions for our NFT metadata.
+
 
 ### 📡 **Wallet Connection:**
 - **WalletConnect**: For secure and streamlined wallet connectivity.
 
 ### 🎖 **File Storage:**
-- **Filecoin/IPFS**: For decentralized storage of NFT metadata.
+- **IPFS via Pinata**:: For decentralized storage of NFT metadata.   
+  Used Pinata's pinning service for decentralized file storage, ensuring persistent and reliable access to NFT metadata on IPFS.
+    -- https://red-spatial-angelfish-279.mypinata.cloud/ipfs/QmT7v6LkLj8Mir6WbF1mnwHHtN3rEpMYrxZZSaRk1xLLPV
+    -- https://red-spatial-angelfish-279.mypinata.cloud/ipfs/Qme2T9Wxc5UaNyEtcomAhXAExQfo61GHPzognYE5LqqUvY
 
 ## Challenges I Ran Into
 
@@ -67,6 +73,7 @@ Future enhancements include:
 
 ### Contracts
 
-- **Scroll Sepolia Testnet - LocalBusinessNFT Contract**: [View on ScrollScan](#)
-- **FVM Chain Testnet - LocalBusinessNFT Contract**: [View on FVMExplorer](#)
+- **Scroll Sepolia Testnet - LocalBusinessNFT Contract**: [View on Blockscout](https://sepolia-blockscout.scroll.io/address/0xCc77B02C28dEc3F4369fb21C8cf0491cFa478287#code)
+- **Arbitrum Stylus Testnet - LocalBusinessNFT Contract**: [View on Blockscout](https://stylus-testnet-explorer.arbitrum.io/address/0xc6d321c0cC595265d7C8e4e462c0f0b614171099)
+- **FVM Chain Testnet - LocalBusinessNFT Contract**: [View on FVMExplorer](https://calibration.filscan.io/address/0xc6d321c0cC595265d7C8e4e462c0f0b614171099/)
 

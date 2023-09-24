@@ -18,11 +18,16 @@ module.exports = {
       url: 'https://stylus-testnet.arbitrum.io/rpc',
       chainId: 23011913,
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    }
+    },
+        calibrationnet: {
+            chainId: 314159,
+            url: "https://api.calibration.node.glif.io/rpc/v1",
+            accounts: [PRIVATE_KEY],
+        }
   },
   etherscan: {
     apiKey: {
-      scrollSepolia: 'abc',
+      arbitrumStylus: 'abc',
     },
     customChains: [
       {
