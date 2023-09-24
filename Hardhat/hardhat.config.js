@@ -9,6 +9,16 @@ module.exports = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
+    arbitrumGoerli: {
+      url: 'https://goerli-rollup.arbitrum.io/rpc',
+      chainId: 421613,
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    arbitrumStylus: {
+      url: 'https://stylus-testnet.arbitrum.io/rpc',
+      chainId: 23011913,
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    }
   },
   etherscan: {
     apiKey: {
@@ -23,6 +33,14 @@ module.exports = {
           browserURL: 'https://sepolia-blockscout.scroll.io/',
         },
       },
+      {
+        network: 'arbitrumStylus',
+        chainId: 23011913,
+        urls: {
+          apiURL: 'https://stylus-testnet.arbitrum.io/rpc',
+          browserURL: 'https://stylus-testnet-explorer.arbitrum.io/',
+        },
+      }
     ],
   },
 };

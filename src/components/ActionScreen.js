@@ -9,8 +9,13 @@ import { Web3Button, Web3NetworkSwitch } from "@web3modal/react";
 const contractJSON = require('./LocalBusinessNFT.json');
 const contractABI = contractJSON.abi;
 
-const contractAddress = "0xCc77B02C28dEc3F4369fb21C8cf0491cFa478287"    //"0xc6d321c0cC595265d7C8e4e462c0f0b614171099"; // Replace with your contract address Scroll Sepolia
+const SCROLL_SEPOLIA_CONTRACT= "0xCc77B02C28dEc3F4369fb21C8cf0491cFa478287"    //"0xc6d321c0cC595265d7C8e4e462c0f0b614171099"; // Replace with your contract address Scroll Sepolia
+const ARBITRUM_STYLUS_CONTRACT= "0xc6d321c0cC595265d7C8e4e462c0f0b614171099"   // Replace with your contract address Stylus Testnet
+const contractAddress = ARBITRUM_STYLUS_CONTRACT;
 
+const JSONRPC_SCROLL="https://sepolia-rpc.scroll.io/"
+const JSONRPC_STYLUS="https://stylus-testnet.arbitrum.io/rpc"
+const jsonRPC =JSONRPC_STYLUS
 
 function ActionScreen() {
   const [strategy, setStrategy] = useState('');
@@ -25,7 +30,7 @@ function ActionScreen() {
   useEffect(() => {
     // Fetch available NFTs from the smart contract when the component mounts
     const fetchAvailableNFTs = async () => {
-      const provider = new JsonRpcProvider("https://sepolia-rpc.scroll.io/");
+      const provider = new JsonRpcProvider(jsonRPC);
       const contract = new Contract(contractAddress, contractABI, provider);
       // Assume you have a function in your contract to get the total number of NFTs
     // Fetch NFTs (This part depends on how your contract is structured)
@@ -58,7 +63,7 @@ function ActionScreen() {
       // Initialize provider and signer
      //const provider = new JsonRpcProvider(process.env.REACT_APP_SCROLL_RPC);
       //const signer = new Wallet(process.env.REACT_APP_PRIVATE_KEY, provider);
-      const provider = new JsonRpcProvider("https://sepolia-rpc.scroll.io/");
+      const provider = new JsonRpcProvider(jsonRPC);
       const signer = new Wallet("<PK>", provider);
 
       
