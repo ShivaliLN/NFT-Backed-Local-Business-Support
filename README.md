@@ -1,4 +1,4 @@
-<img src="./logo.jpg" alt="NFT-Backed Local Business Support Logo" width="200"/>
+<img src="./logo.png" alt="NFT-Backed Local Business Support Logo" width="200"/>
 
 # NFT4Local (NFT-Backed Local Business Support)
 

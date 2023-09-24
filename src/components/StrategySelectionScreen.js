@@ -14,7 +14,7 @@ function StrategySelectionScreen() {
       <Box textAlign="center" fontSize="xl">
         <VStack spacing={8}>
           <Heading as="h1" size="2xl">
-            Select Your Strategy
+            Select Your Path
           </Heading>
           <Button colorScheme="teal" size="lg" onClick={() => selectStrategy('supportLocalBusiness')}>
             Support Local Business

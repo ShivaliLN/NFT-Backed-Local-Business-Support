@@ -178,7 +178,7 @@ const handleBurnNFT = async (tokenId) => {
           )}
 {strategy === 'supportLocalBusiness' && (
   <>
-    <Text fontSize="2xl" mb={4}>Support Local Businesses by Minting NFTs</Text>
+    <Text color={"orange"} fontSize="2xl" mb={4}>Support Local Businesses by Minting NFTs</Text>
     <Flex wrap="wrap" justify="flex-start">
       {availableNFTs.map((nft) => {
         // Extract Business Name and Description from attributes
@@ -223,7 +223,7 @@ const handleBurnNFT = async (tokenId) => {
 
           {strategy === 'createNFTForLocalBusiness' && (
             <>
-              <Text>Create your NFT for Local Business</Text>
+              <Text color={"orange"}>Create your NFT for Local Business</Text>
               <FormControl id="businessName">
                 <FormLabel>Business Name</FormLabel>
                 <Input 
